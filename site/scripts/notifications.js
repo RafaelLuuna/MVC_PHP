@@ -1,4 +1,5 @@
 window.onload = function start (){
+    alert("teste");
 
     var visit_count = sessionStorage.getItem('visit_count');
     if(visit_count == null){

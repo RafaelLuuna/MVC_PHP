@@ -15,7 +15,6 @@ Class UserClass{
             $dados = $sql->fetch();
             
             $_SESSION['id_user'] = $dados['id_usuario'];
-            echo ""
             
             return true;
         }else{
