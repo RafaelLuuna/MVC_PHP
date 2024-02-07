@@ -118,7 +118,6 @@ p{
 .message-box {
     height: 25px;
     width: 300px;
-    display: none;
     background: linear-gradient(rgb(241 255 247),rgb(187 255 207));
     border-radius: 4px;
     border: 2px solid #a5f099;
@@ -138,7 +137,6 @@ p{
 .error-box {
     height: 25px;
     width: 300px;
-    display: none;
     background: linear-gradient(rgb(255, 240, 240),rgb(254, 200, 200));
     border-radius: 4px;
     border: 2px solid #ffc4c4;

@@ -10,10 +10,7 @@
 
 </head>
 <body>
-                    <div class="error-box" id="main-box">
-                        <input onclick="this.parentNode.remove(); return false;" type="button" class="close-btn" value="X">
-                        <p id="main-box-text"></p>
-                    </div>
+    <div id="notification"></div>
 
 
     <form class="form" action="scripts/logar.php", method="POST">
@@ -58,7 +55,7 @@
 
     
 
-    <!-- <script src="scripts/notifications.js"></script> -->
+    <script src="scripts/notifications.js"></script>
 
 </body>
 </html>
