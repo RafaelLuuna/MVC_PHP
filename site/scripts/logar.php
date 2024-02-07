@@ -1,6 +1,7 @@
 <?php
 
 function escape($login_validation){
+    echo '<script language="javascript">alert("teste");</script>';
     if($login_validation == true){
         if(isset($_SESSION['id_user'])){
             $_SESSION['login_err'] = '';
