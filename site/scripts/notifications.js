@@ -1,6 +1,6 @@
 
 window.onload = function start (){
-    ShowNotification("teste","error-box","notification");
+    ShowNotification("teste","error-box","notification-container");
     
     // var login_err = sessionStorage.getItem('login_err');
 
@@ -19,11 +19,23 @@ function VerifyLogin(){
 
 function ShowNotification(message, type, divId){
 
-    const boxDiv = `<div class="${type}" id="main-box">
-                        <input onclick="this.parentNode.remove(); return false;" type="button" class="close-btn" value="X">
-                        <p>${message}</p>
-                    </div>`;
-    document.getElementById(divId).innerHTML = boxDiv;
-    document.getElementById('main-box').style.display = 'block';
-}
+    const div = document.createElement('div');
+    const clsBtn = document.createElement('input')
+    const messageP = document.createElement('p');
 
+    div.setAttribute("class",type);
+    div.setAttribute("id","main-box");
+    div.style.display = "block";
+    
+    clsBtn.setAttribute("onclick","this.parentNode.remove(); return false;")
+    clsBtn.setAttribute("type","button")
+    clsBtn.setAttribute("class","close-btn")
+    clsBtn.setAttribute("value","X")
+
+    messageP.innerText = message
+
+    div.appendChild(clsBtn);
+    div.appendChild(messageP);
+    
+    document.getElementById(divId).appendChild(div);
+}

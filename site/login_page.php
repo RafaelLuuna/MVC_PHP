@@ -7,12 +7,11 @@
     
     <link rel="stylesheet" href="./css/style.css">
     
-    <script src="scripts/notifications.js"></script>
 </head>
 <body>
-    <div id="notification"></div>
+    <div id="notification-container"></div>
     
-    
+    <script></script>
     <form class="form" action="scripts/logar.php", method="POST">
         <div class="card">
             <div class="card-section">
@@ -53,5 +52,7 @@
     </div>
     </form>
     
+    <script src="scripts/notifications.js"></script>
+
 </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
 
 function escape($login_validation){
-    echo '<script language="javascript">alert("teste");</script>';
     if($login_validation == true){
         if(isset($_SESSION['id_user'])){
             $_SESSION['login_err'] = '';
@@ -22,6 +21,7 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
     
     $login = addslashes($_POST['email']);
     $senha = addslashes($_POST['senha']);
+
 
     escape($u->login($login, $senha));
     

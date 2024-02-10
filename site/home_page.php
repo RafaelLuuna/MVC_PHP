@@ -10,7 +10,6 @@
 <body>
     <div class="form">
         <div class="card">
-            <div class="error-box" id="error-box">Não mudou nada</div>
             <div class="card-section">
                 <h2 class="card-content">Bem vindo ao meu site!</h2>
                 <a href="login_page.php">Clique aqui para voltar a tela de login</a>
