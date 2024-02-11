@@ -1,6 +1,6 @@
 
 window.onload = function start (){
-    ShowNotification("teste","error-box","notification-container");
+    ShowNotification("teste","message red","notification-container");
     
     // var login_err = sessionStorage.getItem('login_err');
 
