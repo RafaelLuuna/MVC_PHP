@@ -17,6 +17,5 @@
     
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="http://localhost/assets/scripts/htmlFunctions.js"></script>
-    <script src="http://localhost/admin/scripts/script.js"></script>
 </body>
 </html>

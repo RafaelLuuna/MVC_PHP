@@ -4,8 +4,8 @@
 <?php
 
 session_start();
-require dirname(__FILE__,2).'/assets/validateUser.php';
-require dirname(__FILE__,2).'/assets/sql/connection.php';
+require dirname(__FILE__,3).'/assets/validateUser.php';
+require dirname(__FILE__,3).'/assets/sql/connection.php';
 
 
 //Verifica se há cookies de pop-ups gerados------------
@@ -22,13 +22,12 @@ setcookie('count-popup', $_SESSION['popupCount'], 0,'/');
 //-----------------------------------------------------
 
 
-require 'master.php';
 
 if(!isset($_SESSION['hash']) or validarUsuario('admin_users') == false){
     $_SESSION['hash'] = 0;
-    echo '<script>insertInto("main-card","http://localhost/admin/views/login.php")</script>';
+    header('location: http://localhost/admin/login');
 }else{
-    header('location: http://localhost/admin/dashboard');
+    require 'master.php';
 }
 echo '<script>showPopups();</script>';
 

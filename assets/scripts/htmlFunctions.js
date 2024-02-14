@@ -51,6 +51,31 @@ function generatePopup(type, message){
 }
 
 function showPopups(){
+    const cookies = document.cookie.split('; ');
+    const popupLimit = parseInt(cookies.find('count-popups')?.split('=')[1]);
+
+    for(i = popupLimit; i >= 0; i--){
+        
+        try{
+            const popupCookie = cookies
+                                        .find((row) => row.startsWith('popup-'+i))
+                                        ?.split('=');
+            const msg = decodeURI(popupCookie[1].replace('+',' '));
+            const cor = popupCookie[0].split('-')[2];
+            
+            const popupElement = generatePopup('popup '+ cor, msg);
+
+            insertInto("main-popup", popupElement, false);            
+
+        }catch(err){}
+
+    }
+
+}
+
+
+
+function createPopupCookie(message, color=""){
     const popupLimit = 10;
 
     for(i = popupLimit; i >= 0; i--){
@@ -65,13 +90,7 @@ function showPopups(){
             
             const popupElement = generatePopup('popup '+ cor, msg);
 
-            insertInto("main-popup", popupElement, false);
-
-            console.log(cookies);
-
-            console.log(popupElement);
-
-            
+            insertInto("main-popup", popupElement, false);            
 
         }catch(err){}
 

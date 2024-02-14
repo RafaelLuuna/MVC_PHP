@@ -37,7 +37,8 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
         $sql->execute();
 
     }else{
-        setcookie('popup-'.($_SESSION['popupCount'] + 1).'-red', 'usuário ou senha inválidos.', time()+2,'/');
+        echo '<script>createPopupCookie("usuário ou senha inválidos.", "red")</script>'
+        // setcookie('popup-'.($_SESSION['popupCount'] + 1).'-red', 'usuário ou senha inválidos.', time()+2,'/');
     }
 
 

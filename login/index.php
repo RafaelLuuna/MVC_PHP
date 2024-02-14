@@ -21,7 +21,7 @@ foreach($_COOKIE as $k => $v){
         $_SESSION['popupCount'] += 1;
     } 
 }
-setcookie('count-popup', $_SESSION['popupCount'], 0,'/');
+setcookie('count-popups', $_SESSION['popupCount'], 0,'/');
 //-----------------------------------------------------
 
 require 'master.php';
