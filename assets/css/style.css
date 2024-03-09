@@ -1,13 +1,159 @@
 /*Gerais*/
-body{
-    background-color: gainsboro;
-    background: radial-gradient(rgb(246, 246, 246), 80%, gainsboro);
-    background-attachment: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+
+:root{
+    --green: #0fcf0c;
+    --gray: #262626;
+    --light-gray: #f2f2f2;
+    --light-blue: #79c6c7;
+
+
+    --header-height: 100px;
+    --side-margin: 10vw;
 }
 
+body{
+    background-color: gainsboro;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+a{
+    color: rgba(14, 124, 2, 0.809);
+}
+
+p{
+    color: rgb(63, 63, 63);
+    margin: 2px;
+}
+
+.header{
+    background-color: var(--gray);
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: var(--header-height);
+    width: 100vw;
+}
+
+.header-margin{
+    height: 100%;
+    width: 83vw;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.header-info{
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+
+.header-info > h2, h3, b, p{
+    margin: 0px;
+    color: white;
+}
+.header-info > h2{
+    margin-bottom: 10px;
+}
+
+.header-logo{
+    height: 80px;
+}
+
+.header-menu{
+    height: 50px;
+    background-color: var(--light-gray);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.3);
+    
+}
+
+.header-menu-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.item-menu-link{
+    height: fit-content;
+    width: fit-content;
+    margin-right: 40px;
+}
+
+.item-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    transition: 0.3s;
+}
+
+.item-menu:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.item-menu:active{
+    transform: scale(0.97);
+    cursor: pointer;
+}
+
+
+.item-menu > p{
+    color: var(--gray);
+}
+
+.item-menu > img{
+    margin-right: 10px;
+    height: 30px;
+}
+
+.main-container{
+    margin-top: 180px;
+    margin-left: var(--side-margin);
+    margin-right: var(--side-margin);
+}
+
+
+
+/* Tabelas */
+
 table{
+    border-radius: 20px;
     width: 100%;
+    border: solid gainsboro 5px;
+    overflow: hidden;
+    border-spacing: 0px;
+}
+
+.title-box {
+    position: relative;
+    left: calc(var(--side-margin)*-1);
+    width: fit-content;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: var(--light-blue);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.title-box-margin{
+    width: var(--side-margin);
+}
+
+.title-box > h2 {
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .tbl-cell{
@@ -21,63 +167,55 @@ table{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 20px;
     margin: 3px;
-    width: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30px;
     border-radius: 5px;
     transition: 0.1s;
 }
 
 .tbl-btn:active{
-    height: 28px;
-    width: 33px;
+    transform: scale(0.9);
     
 }
 
-.green:hover{
+.tbl-btn.green:hover{
     outline: 0px;
     background-color: rgb(15, 207, 12);
     color: white;
 }
-.green{
+.tbl-btn.green{
     background-color: white;
     outline: 2px solid rgb(15, 207, 12);;
     color: rgb(15, 207, 12);
 }
-.red:hover{
+.tbl-btn.red:hover{
     outline: 0px;
     background-color: rgb(226, 30, 30);
     color: white;
 }
-.red{
+.tbl-btn.red{
     background-color: white;
     outline: 2px solid rgb(226, 30, 30);
     color: rgb(226, 30, 30);
 }
 
 th, td{
-    outline: 1px solid rgb(230, 230, 230);
+    outline: 1px solid gainsboro;
     padding: 5px;
 }
 td{
-    color: #515151;
+    text-align: center;
+    color: var(--gray);
+    background: rgb(255, 255, 255);
 }
 th{
-    background: rgb(230, 230, 230);
+    color: var(--gray);
+    background: rgb(211, 211, 211);
 }
 
-h1{
-    color: rgb(63, 63, 63);
-}
-
-a{
-    color: rgba(14, 124, 2, 0.809);
-}
-
-p{
-    color: rgb(63, 63, 63);
-    margin: 2px;
-}
 
 
 /*Card*/
@@ -90,9 +228,11 @@ p{
     justify-content: center;
     width: 300px;
     background-color: white;
-    box-shadow: 1px 1px 5px gray;
-    padding: 20px;
+    outline: 2px solid rgb(224, 224, 224);
     border-radius: 10px;
+    padding: 20px;
+    animation: pop 0.3s;
+    transition: 0.1s;
 }
 
 .card.large{
@@ -107,6 +247,18 @@ p{
 
 .card-menu{
     background: linear-gradient(white, gray);
+}
+
+@keyframes pop {
+    0%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    30%{
+        transform: translate(-50%, -51%) scale(1.02);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 
@@ -266,6 +418,13 @@ p{
 
 
 /*outros*/
+
+.link{
+    background-color: none;
+    border: 0px;
+    text-decoration: underline;  
+    cursor: pointer;  
+}
 
 .login-img{
     border-radius: 50px;

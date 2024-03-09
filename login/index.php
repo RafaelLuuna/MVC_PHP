@@ -2,30 +2,19 @@
 
 
 <?php
+require dirname(__FILE__,2).'/assets/constants/dir.php';
 
-require dirname(__FILE__,2).'/assets/validateUser.php';
-require dirname(__FILE__,2).'/assets/sql/connection.php';
-
-session_start();
-$_SESSION['hash'] = 0;
+if(session_status() === PHP_SESSION_NONE) session_start();
 
 
-//Verifica se há cookies de pop-ups gerados------------
-setcookie('haspopup', 'false', 0,'/');
-$_SESSION['popupCount'] = 0;
 
+$_SESSION['hash'] = '';
+$_SESSION['redirect'] = '';
 
-foreach($_COOKIE as $k => $v){
-    if(substr($k,0,5) == 'popup'){
-        setcookie('haspopup', 'true', 0,'/');
-        $_SESSION['popupCount'] += 1;
-    } 
-}
-setcookie('count-popups', $_SESSION['popupCount'], 0,'/');
-//-----------------------------------------------------
+require 'master.html';
 
-require 'master.php';
-
+require BASE.'/assets/scripts/popups.php';
+showPopups();
 
 ?>
 

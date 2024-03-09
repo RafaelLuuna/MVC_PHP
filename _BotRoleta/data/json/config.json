@@ -1,0 +1,14 @@
+{
+    "user":{
+        "username": "daniellunatec@gmail.com",
+        "password": "Da10203040"
+    },
+    "bot":{
+        "leitura":2,
+        "params":["opostos","mesmoFinal", "vizinhos"]
+    },
+    "paths": {
+        "botUrl": "http://localhost/_BotRoleta/bot",
+        "gameUrl": "https://blaze-7.com/pt/games/immersive-roulette/"
+    }
+}

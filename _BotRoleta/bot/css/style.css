@@ -1,0 +1,50 @@
+.tabela{
+    display: flex;
+}
+
+#divComandos > div{
+    display: none;
+}
+
+.col{
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zero{
+    height: 90px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.num{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cinza{
+    background-color: rgb(218, 218, 218);
+    color: rgb(180, 180, 180);
+}
+
+.verde{
+    background-color: rgb(60, 230, 41);
+    color: white;
+}
+
+.preto{
+    background-color: black;
+    color: white;
+}
+
+.vermelho{
+    background-color: red;
+    color: white;
+}

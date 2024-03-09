@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+</head>
+<body>
+    <div id="ultimoStatus"></div>
+    <div id="divComandos">
+        <div id="divApostas"></div>
+    </div>
+    
+    <input type="checkbox" id="contarVitoriasDerrotas"><label for="">Contar vitórias/derrotas?</label><br>
+    <label for="wins">Wins</label><input type="number" name="wins" id="inputWins" value="0">
+    <label for="losts">Losts</label><input type="number" name="losts" id="inputLosts" value="0">
+    <br>
+    <br>
+    <label for="balanco">Balanço final</label><input type="number" name="balanco" id="inputBalanco" value="0"><br>
+    <label for="totalApostado">Total apostado</label><input type="number" name="totalApostado" id="inputTotalApostado" value="0"><br>
+    <label for="totalArrecadado">Total Arrecadado</label><input type="number" name="totalArrecadado" id="inputTotalArrecadado" value="0"><br>
+
+    
+    <h3>Últimos lances</h3>
+    <div id="divLances" style="display: flex;"></div>
+    
+    
+    <label for="novoLance">Novo lance (pressione 'enter' para adicionar)</label><br><input type="number" id="novoLance" name="novoLance">
+    <!-- <button onclick="addLance();">Add</button> -->
+    
+    <br>
+    <br>
+    
+    <h3>Aposta sugerida</h3>
+    <!-- <button onclick="sugerirAposta();">Atualizar</button> -->
+
+    <div>
+        <p>Qnt. de apostas: <span id="qntApostas"></span></p>
+    </div>    
+    <div id="tabela" class="tabela"></div>
+
+    <br>
+    
+    <!-- <button onclick="addComando('apostar');">Apostar</button>
+    <button onclick="addComando('encerrar');">Encerrar bot</button> -->
+    
+    
+    <h3>Config</h3>
+    <!-- <label for="valorFicha">Valor da ficha</label><br><input type="number" id="valorFicha" name="valorFicha"> -->
+    
+    <label for="">Leitura</label><br>
+    <input type="number" id="leitura" value="2">
+    <br>
+    <label for="">vizinhos</label><br>
+    <input type="number" id="vizinhos" value="-1">
+    <br>
+    <br>
+    <div id="configCheckBoxes">
+        <input type="checkbox" id="opostos"><label for="">Número oposto</label><br>
+        <input type="checkbox" id="mesmoFinal"><label for="">final igual</label><br>
+        <!-- <input type="checkbox" id="cavalos" checked="true"><label for="">cavalos</label><br> -->
+
+    </div>
+    
+    <script src="scripts/js/scriptOffline.js">sugerirLance();</script>
+</body>
+</html>
