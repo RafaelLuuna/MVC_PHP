@@ -7,6 +7,8 @@ function setPopupCookie($msg, $typ='none'){
 }
 
 function showPopups($popupContainer = '#main-popup'){
+    echo 'varFrom:'. dirname(__FILE__).'(10)<br>';
+    echo '$_COOKIE:';
     var_dump($_COOKIE);
     if (isset($_COOKIE['popup'])) {
         foreach ($_COOKIE['popup'] as $k => $v) {
