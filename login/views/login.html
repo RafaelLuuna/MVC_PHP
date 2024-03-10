@@ -1,4 +1,4 @@
-<div class="card" id="card">
+<div class="card login" id="card">
     <div>
         <div class="card-section">
 
@@ -6,10 +6,9 @@
 
             <h2 class="title">LOGIN</h2>
             
-            <hr color="gainsboro" size="1px">
-            
         </div>
-
+        
+        <hr color="gainsboro" size="1px">
         
         <div class="card-section">
                 <form action="http://localhost/login/scripts/logar.php" method="POST">
@@ -24,14 +23,17 @@
                     <input class="input" name="senha" minlength="3" type="password" id="password" placeholder="Senha" required>
                 </div>
                 
-                <input class="btn verde" type="submit" value="Acessar">
+                <input class="card-btn verde" type="submit" value="Acessar">
+                <br>
+                <!-- <a href="http://localhost/login/nova-senha">Esqueci minha senha</a> -->
             </form>
         </div>
             
+        <hr color="gainsboro" size="1px">
+
         <div class="card-section">
-            <hr color="gainsboro" size="1px">
-            <p>Primeiro acesso?</p>
-            <input class="btn branco verde" type="button" value="Cadastre-se aqui" onclick="insertInto('main-card','http://localhost/login/views/cadastro.html');">
+            <h4>Problemas ao acessar?</h4>
+            <p>Entre em contato com seu gestor.</p>
             
         </div>
     </div>

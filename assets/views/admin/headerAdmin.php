@@ -10,9 +10,16 @@
         </div>
         <div class="header-menu">
             <div class="header-margin">
-                <div></div>
-                <div class="header-menu-items">
-                    <a class="item-menu-link" href="http://localhost/img/icons/users.png">
+                <div class="flex-container-row">
+                    <a class="fit" href="http://localhost/admin/login">
+                        <div class="item-menu">
+                            <img src="http://localhost/img/icons/exit.png" alt="ícone de usuário">
+                            <p>Sair</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="flex-container-row">
+                    <a class="fit" href="http://localhost/admin/usuarios">
                         <div class="item-menu">
                             <img src="http://localhost/img/icons/users.png" alt="ícone de usuário">
                             <p>Usuários</p>
@@ -20,7 +27,7 @@
                     </a>
 
 
-                    <a class="item-menu-link" href="http://localhost/img/icons/users.png">
+                    <a class="fit" href="http://localhost/admin/produtos">
                         <div class="item-menu">
                             <img src="http://localhost/img/icons/produtos.png" alt="ícone de usuário">
                             <p>Produtos</p>
@@ -28,7 +35,7 @@
                     </a>
 
 
-                    <a class="item-menu-link" href="http://localhost/img/icons/users.png">
+                    <a class="fit" href="http://localhost/admin/config">
                         <div class="item-menu">
                             <img src="http://localhost/img/icons/config.png" alt="ícone de usuário">
                             <p>Config</p>
