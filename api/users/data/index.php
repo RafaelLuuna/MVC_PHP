@@ -4,8 +4,11 @@ $input = file_get_contents('php://input');
 $input = json_decode($input, true);
 
 require dirname(__FILE__,4).'/assets/constants/dir.php';
-require BASE.'/assets/classes/UserClass.php';
 require BASE.'/assets/sql/connection.php';
+require BASE.'/assets/classes/UserClass.php';
+require BASE.'/assets/scripts/blocker.php';	
+
+blocker('http://localhost/admin/login', 'admin_users');
 
 $sql = 'SELECT id_usuario, nome, email, status, dt_cadastro FROM usuarios';
 
