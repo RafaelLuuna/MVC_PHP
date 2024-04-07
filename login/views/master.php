@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,6 @@
     <div id="main-card"></div>
     
     
-    <script src="http://localhost/assets/scripts/htmlFunctions.js"></script>
-    <script src="http://localhost/login/scripts/script.js"></script>
+    <script type="module" src="http://localhost/assets/scripts/main.js"></script>
 </body>
 </html>

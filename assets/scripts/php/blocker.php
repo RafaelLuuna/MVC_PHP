@@ -1,6 +1,6 @@
 <?php
 
-function blocker($loginUrl = 'http://localhost/login', $table = 'usuarios'){
+function blocker($loginUrl = _MAIN_URL.'/login', $table = 'usuarios'){
 
     if(session_status() === PHP_SESSION_NONE) session_start();
     

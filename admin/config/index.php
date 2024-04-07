@@ -8,18 +8,15 @@ require dirname(__FILE__,3).'/assets/constants/dir.php';
 
 require BASE.'/assets/sql/connection.php';
 require BASE.'/assets/classes/UserClass.php';
-require BASE.'/assets/scripts/blocker.php';	
+require BASE.'/assets/scripts/php/blocker.php';	
 
-blocker('http://localhost/admin/login', 'admin_users');
+blocker(_MAIN_URL.'/admin/login', 'admin_users');
 
 //---------------------------------------------------------------------------------------------------------------------
 
 require BASE.'/assets/views/admin/master.php';
-require BASE.'/assets/views/admin/headerAdmin.php';
-require BASE.'/assets/views/admin/config.php';
-
-require BASE.'/assets/scripts/popups.php';
-showPopups();
+require BASE.'/assets/views/admin/headerAdmin.html';
+require BASE.'/assets/views/admin/config.html';
 
 ?>
 

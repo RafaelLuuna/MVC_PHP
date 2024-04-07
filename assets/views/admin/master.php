@@ -1,5 +1,5 @@
 <?php
-blocker('http://localhost/admin/login', 'admin_users');
+blocker(_MAIN_URL.'/admin/login', 'admin_users');
 ?>
     
 <!DOCTYPE html>
@@ -15,7 +15,8 @@ blocker('http://localhost/admin/login', 'admin_users');
 </head>
 <body>
     <div id="main-popup"></div> 
-    <script src="http://localhost/assets/scripts/htmlFunctions.js"></script>
-    <script src="http://localhost/admin/scripts/script.js"></script>
+
+    
+    <script type="module" src="http://localhost/assets/scripts/main.js"></script>
 </body>
 </html>

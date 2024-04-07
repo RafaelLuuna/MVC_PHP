@@ -35,7 +35,7 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
         $sql->execute();
 
     }else{
-        require BASE.'/assets/scripts/popups.php';
+        require BASE.'/assets/scripts/php/popups.php';
         setPopupCookie('usuário ou senha inválidos.','red');
         
     }
@@ -43,6 +43,6 @@ if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['senha']) &
 }
 
 
-header('location: http://localhost/');
+header('location: '._MAIN_URL);
 
 ?>

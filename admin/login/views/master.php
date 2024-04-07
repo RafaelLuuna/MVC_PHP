@@ -14,7 +14,5 @@
     <div id="main-card"></div>
     
     
-    <script src="http://localhost/assets/scripts/htmlFunctions.js"></script>
-    <script src="http://localhost/admin/login/scripts/script.js"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@
 	require './assets/sql/connection.php';
 	require './assets/classes/UserClass.php';
 	
-	require './assets/scripts/blocker.php';	
+	require './assets/scripts/php/blocker.php';	
 	
 
 	blocker();

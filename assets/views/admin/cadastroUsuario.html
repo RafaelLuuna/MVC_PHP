@@ -1,5 +1,3 @@
-
-
 <div class="main-container">
     <div class="main-container-row">
         <div class="title-box">
@@ -10,7 +8,7 @@
     <div class="main-container-row">
     <div class="card">
         <div class="card-section">
-            <form action="http://localhost/admin/usuarios/cadastro/scripts/cadastrar.php" onsubmit="return validarCadastro()" method="POST">
+            <form action="http://localhost/admin/usuarios/cadastro/scripts/cadastrar.php" method="POST">
                 <div class="flex-container-column">
                     <div class="input-group">
                         <label for="nome">nome</label>
@@ -19,7 +17,7 @@
                 
                     <div class="input-group">
                         <label for="email">e-mail</label>
-                        <input id="emailCadastro" type="email" name="email" required>
+                        <input id="email" type="email" name="email" required>
                     </div>
                 
                     <div class="input-group">
@@ -29,7 +27,7 @@
                 
                     <div class="input-group">
                         <label for="confirmar senha">confirmar senha</label>
-                        <input id="pw2" type="password" name="confirmarSenha" required>
+                        <input id="pw2" type="password" onchange="validarSenha()" name="confirmarSenha" required>
                     </div>
 
                 </div>
@@ -43,4 +41,3 @@
 
     </div>
 </div>
-

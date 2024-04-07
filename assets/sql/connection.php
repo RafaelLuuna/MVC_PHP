@@ -17,26 +17,4 @@ try{
     exit;
 }
 
-function query($query, $data_list){
-
-}
-
-function loadTable($table, $columns = '*', $conditions=''){
-    
-    if($conditions !== ''){
-        $conditions = " WHERE ".$conditions;
-    }
-
-    $sql = "SELECT $columns FROM $table;";
-    $sql = $pdo->prepare($sql);
-    $sql->execute();
-    
-    $data = $sql->fetch();
-    
-    return json_encode($data);
-    
-}
-
-
-
 ?>

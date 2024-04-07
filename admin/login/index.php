@@ -3,18 +3,17 @@
 
 <?php
 
+// A página de login não possui nenhum bloqueio pois ainda não foi gerado o token de identificação
 require dirname(__FILE__,3).'/assets/constants/dir.php';
 
 if(session_status() === PHP_SESSION_NONE) session_start();
 
-
 $_SESSION['hash'] = '';
 $_SESSION['redirect'] = '';
 
-require 'master.html';
+require './views/master.php';
+require './views/loginAdmin.html';
 
-require BASE.'/assets/scripts/popups.php';
-showPopups();
 
 ?>
 
