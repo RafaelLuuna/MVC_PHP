@@ -1,0 +1,8 @@
+RewriteEngine on
+
+#Permite carregar arquivos e pastas existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#redireciona todo o resto para o index.php
+RewriteRule ^(.*)$ index.php?url=$1 [L]
