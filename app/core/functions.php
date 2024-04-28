@@ -6,13 +6,6 @@ function show($value){
     echo "</pre>";
 }
 
-function checkUserExist($data){
-    foreach ($data as $key => $value) {
-        if(empty($value) && $key != ""){
-            
-        }
-    }
-}
 
 function checkHash($idUser, $hash){
 

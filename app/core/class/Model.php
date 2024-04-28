@@ -1,6 +1,6 @@
 <?php
 
-class Model
+Trait Model
 {
     use DataBase;
 
@@ -8,6 +8,7 @@ class Model
     protected $limit = 15;
     protected $offset = 0;
 
+    
     private function groupParams($data, $format=":key", $delimiter=" , ", $parentheses=false){
         // Descrição:
         // Essa função retorna uma string que concatena todos os campos de dados separados por um delimitador. Também é possível colocá-los entre parênteses.
