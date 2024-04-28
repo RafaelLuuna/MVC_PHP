@@ -7,10 +7,10 @@ trait DataBase
         try
         {
             $string = "mysql:dbname=".DB_NAME."; hostname=".DB_HOST;
-            $con = new PDO($string , DB_USER, DB_PASSWORD);
-            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connection = new PDO($string , DB_USER, DB_PASSWORD);
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            return $con;
+            return $connection;
         
         }catch(PDOException $e)
         {
@@ -20,17 +20,27 @@ trait DataBase
 
     }
 
-    public function query($query)
+    public function query($query, $data=[])
     {
-        $con = $this->connect();
+        $connection = $this->connect();
 
-        $stm = $con->prepare($query);
-        $response = $stm->execute();
+        $stm = $connection->prepare($query);
 
-        if($response == true)
+        
+        foreach($data as $key => $value){
+            
+            if(substr($key,0,1) != ":"){$key = ":". $key;}
+            $stm->bindValue($key, $value);  
+
+        }
+        
+        
+        $check = $stm->execute();
+        
+        if($check)
         {
-            $data = $response->fetchAll(PDO::FETCH_OBJ);
-            if(is_array($data) && count($data) > 0)
+            $data = $stm->fetchAll(PDO::FETCH_OBJ);
+            if(is_array($data))
             {
                 return $data;
             }
@@ -43,14 +53,14 @@ trait DataBase
 
     public function getFirstRow($query)
     {
-        $con = $this->connect();
+        $connection = $this->connect();
 
-        $stm = $con->prepare($query);
-        $response = $stm->execute();
+        $query = $connection->prepare($query);
+        $check = $query->execute();
 
-        if($response == true)
+        if($check == true)
         {
-            $data = $response->fetchAll(PDO::FETCH_OBJ);
+            $data = $query->fetchAll(PDO::FETCH_OBJ);
             if(is_array($data) && count($data) > 0)
             {
                 return $data;
