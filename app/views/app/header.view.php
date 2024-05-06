@@ -12,7 +12,7 @@
             <div class="header-margin">
                 <div class="flex-container-row">
 
-                    <a class="fit-content" href="<?=ROOT?>login">
+                    <a class="fit-content" href="<?=ROOT?>logout">
                         <div class="item-menu">
                             <img src="<?=ROOT?>assets/img/icons/exit.png" alt="ícone de usuário">
                             <p>Logout</p>

@@ -9,7 +9,7 @@
     <div class="card-element h9 w4">
         <h1>Bem vindo!</h1>
         <p>Faça login abaixo para acessar o sistema</p>
-        <form class="w8" action="<?=ROOT?>/" method="POST">
+        <form class="w8" action="<?=ROOT?>login/logar" method="POST">
             <div class="input-group">
                 <label for="email">E-mail</label>
                 <input name="email" type="email" id="email" placeholder="E-mail" required>
@@ -22,7 +22,6 @@
             
             <input class="card-btn verde" type="submit" value="Acessar">
             <br>
-            <!-- <a href="<?=ROOT?>/login/nova-senha">Esqueci minha senha</a> -->
         </form>
             
                 

@@ -1,4 +1,7 @@
 <?php
+
+defined("ROOTPATH") OR exit("Acces denied.");
+
 define('BASE', dirname(__FILE__,2));
 
 if ($_SERVER['SERVER_NAME'] == 'localhost')

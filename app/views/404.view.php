@@ -10,12 +10,12 @@
 </head>
 <body>
 
-    <div class='card center w50'>
-        <div class='card-section'>
-            <h1>Erro 404</h3>
-            <hr/>
-            <p>A página que você tentou acessar não existe.</p>
-
+    <div class='card w01 h01 flex column center'>
+        <div class='card-element w10 h3'>
+            <h1>Erro 404</h1>
+        </div>
+        <div class='card-element justify-start w10 h3'>
+            <p>Página não encontrada.</p>
         </div>
     </div>
 

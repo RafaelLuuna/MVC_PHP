@@ -1,8 +1,8 @@
 <?php
-
+defined("ROOTPATH") OR exit("Acces denied.");
 class App
 {
-    private $controller = "Login";
+    private $controller = "Home";
     private $method     = "index";
 
     public function __construct()
@@ -13,7 +13,7 @@ class App
     private function splitCurrentURL()
     {
 
-        $URL = $_GET["url"] ?? 'Login';
+        $URL = $_GET["url"] ?? 'Home';
 
         $URL = explode("/", rtrim($URL,'/'));
 
@@ -25,9 +25,11 @@ class App
     private function loadController()
     {
         $URL = $this->splitCurrentURL();
+
+        // Caso tente acessar o admin, os controllers serão procurados em outra pasta.
         if(ucfirst($URL[0]) == 'Admin'){
             $filename = "../app/controllers/admin/";
-            empty($URL[1]) ? array_splice($URL,0,1, ['Login']) : array_splice($URL,0,1);
+            empty($URL[1]) ? array_splice($URL,0,1, ['Usuarios']) : array_splice($URL,0,1);
             
         }else{
             $filename = "../app/controllers/app/";

@@ -13,6 +13,31 @@
     position: inherit;
 }
 
+button {
+    height: 35px;
+    width: 120px;
+    border: none;
+    background: var(--gray);
+    color: white;
+}
+
+body{
+    background-color: gainsboro;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: rgba(14, 124, 2, 0.809);
+}
+
+hr{
+    width: 80%;
+    color: var(--dark-gray);
+
+}
+
 
 .w1{
     width: 10%;
@@ -98,23 +123,6 @@
     transform: translate(-50%, -50%);
     top: 50vh;
     left: 50vw;
-
-}
-
-body{
-    background-color: gainsboro;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-a{
-    color: rgba(14, 124, 2, 0.809);
-}
-
-hr{
-    width: 80%;
-    color: var(--dark-gray);
 
 }
 
@@ -382,11 +390,12 @@ th{
     outline: 2px solid rgb(224, 224, 224);
     border-radius: 10px;
     padding: 20px;
-    animation: pop 0.3s;
-    transition: 0.1s;
 }
 
 
+.card.w01{
+    width: 20vw;
+}
 .card.w1{
     width: 33vw;
 }
@@ -395,6 +404,11 @@ th{
 }
 .card.w3{
     width: 100vw;
+}
+
+
+.card.h01{
+    height: 20vh;
 }
 .card.h1{
     height: 33vh;
@@ -414,6 +428,11 @@ th{
     flex-direction: column;
 }
 
+.card-element.justify-start{
+    justify-content: start;
+}
+
+
 
 .card-element > p{
     color: var(--gray);
@@ -423,17 +442,7 @@ th{
 
 
 
-@keyframes pop {
-    0%{
-        transform: translate(-50%, -50%) scale(1);
-    }
-    30%{
-        transform: translate(-50%, -51%) scale(1.02);
-    }
-    100%{
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
+
 
 
 
@@ -524,79 +533,60 @@ th{
 
 
 /* popups */
-.popup {
-    background: linear-gradient(rgb(255, 255, 255),rgb(227, 227, 227));
-    border: 2px solid #c8c8c8;
-    border-radius: 4px;
-    font-size: 12px;
-    color: var(--gray);
-
-    height: 25px;
-    width: 300px;
-
-    padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    
-    text-align: center;
+.popup-background {
+    background: black;
+    opacity: 30%;
     position: absolute;
-
-    top: 0vh;
-    left: calc(50vw - 150px);
-
-    animation: dropar 1s;
-    z-index: 20;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
-
-.popup.green{
-    background: linear-gradient(rgb(241 255 247),rgb(187 255 207));
-    border: 2px solid #a5f099;
-    color: #61b861
+.popup-close{
+    position: absolute;
+    left: 93%;
+    top: 0;
+    color: var(--gray);
+    background: var(--light-gray);
+    width: 20px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.popup.red {
-    background: linear-gradient(rgb(255, 240, 240),rgb(254, 200, 200));
-    color: #b86161;
-    border: 2px solid #ffc4c4;
+.card.popup {
+    height: 50vh;
+    width: 30vw;
+    overflow: hidden;
+    animation: pop 0.3s;
+    transition: 0.1s;
 }
 
-.close-btn {
-    float: right;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.2);
-    padding: 2px 5px;
-    transition-duration: 0.5s;
-    border: 0px;
-    color: #393939;
-    font-size: 8px;
+.popup {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
-.close-btn:hover {
-    background-color: rgba(0,0,0,0.1);
-    color: #7a7a7a;
-    border: 0px;
-    font-size: 8px;
+.popup img {
+    height: 100%;
 }
 
-@keyframes dropar{
+@keyframes pop {
     0%{
-        transform: translate(0px, -10vh);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    30%{
+        transform: translate(-50%, -51%) scale(1.02);
     }
     100%{
-        transform: translate(0px, 0vh);
+        transform: translate(-50%, -50%) scale(1);
     }
 }
-
-@keyframes subir{
-    0%{
-        transform: translate(0px, 0px);
-    }
-    100%{
-        transform: translate(0px, -10vh);
-    }
-}
-
 
 /*outros*/
 

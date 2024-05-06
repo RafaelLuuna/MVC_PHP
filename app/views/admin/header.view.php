@@ -11,7 +11,7 @@
         <div class="header-menu">
             <div class="header-margin">
                 <div class="flex-container-row">
-                    <a class="fit-content" href="<?=ROOT?>admin/login">
+                    <a class="fit-content" href="<?=ROOT?>admin/logout">
                         <div class="item-menu">
                             <img src="<?=ROOT?>assets/img/icons/exit.png" alt="ícone de usuário">
                             <p>Logout</p>
@@ -21,7 +21,7 @@
                 <div class="flex-container-row">
                     <a class="fit-content" href="<?=ROOT?>admin/usuarios">
                         <div class="item-menu">
-                            <img src="<?=ROOT?>assets/img/icons/search.png" alt="ícone de usuário">
+                            <img src="<?=ROOT?>assets/img/icons/users.png" alt="ícone de usuário">
                             <p>Usuários</p>
                         </div>
                     </a>
@@ -29,7 +29,7 @@
 
                     <a class="fit-content" href="<?=ROOT?>admin/produtos">
                         <div class="item-menu">
-                            <img src="<?=ROOT?>assets/img/icons/produtos.png" alt="ícone de usuário">
+                            <img src="<?=ROOT?>assets\img\icons\search.png" alt="ícone de usuário">
                             <p>Produtos</p>
                         </div>
                     </a>

@@ -6,13 +6,12 @@
     <title>Promotendas</title>
 
     <link rel="stylesheet" href="<?=ROOT?>assets/css/style.css">
-    <script src="https://kit.fontawesome.com/8d8f4ee15f.js" crossorigin="anonymous"></script>
-    
+    <script src="https://kit.fontawesome.com/8d8f4ee15f.js" crossorigin="anonymous"></script>    
+    <script type="module" src="<?=ROOT?>assets/js/functions.js"></script>    
 </head>
 <body>
-    <div id="main-popup"></div> 
+ 
 
     
-    <script type="module" src="<?=ROOT?>assets/scripts/main.js"></script>
 </body>
 </html>
