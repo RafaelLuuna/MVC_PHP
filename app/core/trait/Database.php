@@ -1,11 +1,12 @@
 <?php
 defined("ROOTPATH") OR exit("Acces denied.");
 trait DataBase{
-    private function connect()
-    {
+
+    protected $dbName = DB_NAME;
+    private function connect(){
         try
         {
-            $string = "mysql:dbname=".DB_NAME."; hostname=".DB_HOST;
+            $string = "mysql:dbname=". $this->dbName ."; hostname=".DB_HOST;
             $connection = new PDO($string , DB_USER, DB_PASSWORD);
             $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
@@ -32,8 +33,7 @@ trait DataBase{
             $stm->bindValue($key, $value);  
 
         }
-        
-        
+                
         $check = $stm->execute();
         
         if($check)
@@ -50,24 +50,6 @@ trait DataBase{
 
     }
 
-    public function getFirstRow($query)
-    {
-        $connection = $this->connect();
-
-        $query = $connection->prepare($query);
-        $check = $query->execute();
-
-        if($check == true)
-        {
-            $data = $query->fetchAll(PDO::FETCH_OBJ);
-            if(is_array($data) && count($data) > 0)
-            {
-                return $data;
-            }
-        }
-
-        return false;
-    }
 
 
 

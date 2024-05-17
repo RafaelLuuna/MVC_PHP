@@ -4,21 +4,32 @@ Trait Model{
     
     use DataBase;
 
-    protected $table = "usuarios";
     protected $limit = 15;
     protected $offset = 0;
 
-    public function find($data, $specific_data=[], $operator='='){
-        $query = "SELECT * FROM $this->table WHERE ";
-        $query .= concatParams($data,"key=:key"," && ", false);
+    public function find($data, $columns=['*'], $specific_data=[], $operator='='){
+        $query = "SELECT ";
+        
+        // Adiciona as colunas retornadas
+        $query .= concatParams($columns,"value",", ", false);
 
+        $query .= " FROM $this->table";
 
-        if(is_array($specific_data) && !empty($specific_data)){
-            if(count($data)>0){
-                $query .= ' && ';
+        if(!empty($data)){
+            // Adiciona os dados de busca
+            $query .= " WHERE ".concatParams($data,"key=:key"," && ", false);
+            
+            // Adiciona quaisquer outros dados específicos de busca
+            if(is_array($specific_data) && !empty($specific_data)){
+                if(count($data)>0){
+                    $query .= ' && ';
+                }
+                $query .= concatParams($specific_data,"key".$operator.":key"," && ", false);
             }
-            $query .= concatParams($specific_data,"key".$operator.":key"," && ", false);
+
         }
+
+
         $query .= " LIMIT $this->limit OFFSET $this->offset;";
 
         
@@ -28,7 +39,7 @@ Trait Model{
 
     }
     
-    public function insert($data, $no_dup=true){
+    public function insert($data, $no_dup=false){
         $query = "INSERT INTO $this->table";
 
         $query .= concatParams($data,"key"," , ", true);
@@ -63,8 +74,8 @@ Trait Model{
             return false;
         }
     }
-    public function first($data, $specific_data=[], $operator='='){
-        $result = $this->find($data, $specific_data, $operator);
+    public function first($data, $columns=['*'], $specific_data=[], $operator='='){
+        $result = $this->find($data, $columns, $specific_data, $operator);
         if(!empty($result)){
             return $result[0];
         }else{

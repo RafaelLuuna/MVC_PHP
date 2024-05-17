@@ -5,7 +5,11 @@ class Logout extends Controller
     use Model;
 
     public function __construct(){
-        session_unset();
+        Session::start();
+    }
+
+    public function index(){
+        Session::destroy();
         redirect('login');
     }
     

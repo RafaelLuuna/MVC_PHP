@@ -4,8 +4,7 @@ defined("ROOTPATH") OR exit("Acces denied.");
 
 define('BASE', dirname(__FILE__,2));
 
-if ($_SERVER['SERVER_NAME'] == 'localhost')
-{
+if ($_SERVER['SERVER_NAME'] == 'localhost'){
 
     /* Database Config */
     define('DB_NAME', 'base');
@@ -17,8 +16,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost')
 
     define('ROOT', 'http://localhost/promotendas/public/');
     
-}else
-{
+}else{
 
     /* Database Config */
     define('DB_NAME', 'base');

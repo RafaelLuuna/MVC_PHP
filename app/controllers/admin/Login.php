@@ -4,12 +4,15 @@ class Login extends Controller
 {
     use Model;
 
+
     public function __construct(){
+        Session::start();
+        Session::set('pagina', 'Login');
         $this->view('master');
     }
 
     public function index(){
-        
+
         $this->showPopup();
         $this->view('login/admin');
 
@@ -18,16 +21,13 @@ class Login extends Controller
     public function logar(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(empty($_POST["email"]) || empty($_POST["senha"])){
-                redirect("Location: ".ROOT."admin/login");
+                redirect("admin/login");
             }
             $user = new User;
-            $check = $user->validateLogin(['email'=>$_POST["email"], 'senha'=>$_POST["senha"]]);
-            if($check){
-                redirect('admin/usuarios');
-            }else{
-                setcookie('popup', 'title:Erro ao fazer login, content:Usuário ou senha inválidos', ['expires'=>time()+2,'path'=>'/']);
-                redirect('admin/login');    
-            }
+            $data = ['email'=>$_POST["email"], 'senha'=>$_POST["senha"]];
+            $user->login($data, 'admin/usuario', 'admin/login');
+        }else{
+            redirect("admin/login");
         }
     }
     

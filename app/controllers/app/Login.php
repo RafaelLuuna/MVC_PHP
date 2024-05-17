@@ -5,6 +5,7 @@ class Login extends Controller
     use Model;
 
     public function __construct(){
+        Session::start();
         $this->view('master');
     }
 
@@ -18,16 +19,13 @@ class Login extends Controller
     public function logar(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if(empty($_POST["email"]) || empty($_POST["senha"])){
-                redirect("Location: ".ROOT."login");
+                redirect("login");
             }
             $user = new User;
-            $check = $user->validateLogin(['email'=>$_POST["email"], 'senha'=>$_POST["senha"]]);
-            if($check){
-                redirect('home');
-            }else{
-                setcookie('popup', 'title:Erro ao fazer login, content:Usuário ou senha inválidos', ['expires'=>time()+2,'path'=>'/']);
-                redirect('login');    
-            }
+            $data = ['email'=>$_POST["email"], 'senha'=>$_POST["senha"]];
+            $user->login($data);
+        }else{
+            redirect("login");
         }
     }
     

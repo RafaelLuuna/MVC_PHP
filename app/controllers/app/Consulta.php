@@ -5,6 +5,7 @@ class Consulta extends Controller
     use Model;
 
     public function __construct(){
+        Session::start();
         $this->blocker('login');
         $this->view('master');
     }

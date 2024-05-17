@@ -16,7 +16,7 @@ require_once BASE.'/core/trait/Model.php';
 require_once BASE.'/core/class/Session.php';
 require_once BASE.'/core/class/Controller.php';
 
-require_once BASE.'/models/User.php';
+require_once BASE.'/models/init.php';
 
 
 require_once BASE.'/core/class/App.php';

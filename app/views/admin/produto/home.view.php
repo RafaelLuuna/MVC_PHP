@@ -1,18 +1,17 @@
 <div class="main-container">
-    <div id="main-popup"></div>
-    <div class="main-container-row">
+    
+    <div class="flex row">
         <div class="title-box">
             <div class="title-box-margin"></div>
-            <h2 class="title">PRODUTOS</h2>    
+            <h2 class="title">Usuarios</h2>    
         </div>
-        <div class="flex-container-row">
-            <div class="btn">
-                <p>NOVO PRODUTO</p>
-            </div>
-
-        </div>
+    <div class="flex row">
+        <a href="http://localhost/promotendas/public/admin/usuarios/cadastro" class="btn">Novo usuário</a>
     </div>
-    <div class="main-container-row">
+
+
+    </div>
+    <div class="flex row">
         <table>
             <thead>
                 <tr>
