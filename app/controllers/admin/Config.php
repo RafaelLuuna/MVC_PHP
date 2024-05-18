@@ -9,6 +9,7 @@ class Config extends Controller
         Session::set('pagina', 'Config');
         $this->blocker('admin/login');
         $this->view('master');
+        $this->showPopup();
     }
 
     public function index(){

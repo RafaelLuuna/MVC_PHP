@@ -7,18 +7,21 @@ Class Table{
     protected $table = "";
 
     public function __construct($table){
-        if(isset($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']) > 0){
-            $page = intval($_GET['page'])-1;
-        }else{
-            $page = 0;
-        }
-
-        $this->offset = $page*$this->limit;
         $this->table = $table;
     }
 
+    public static function currentPage(){
+        if(isset($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']) > 0){
+            $page = intval($_GET['page']);
+        }else{
+            $page = 1;
+        }
+        return $page;
+    }
+
     public function tableData($search=[], $config=[]){
-        return $this->find($search=[], $config=[]);
+        $config['page'] = $this->currentPage();
+        return $this->find($search, $config);
     }
 
 }

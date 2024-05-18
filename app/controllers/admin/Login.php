@@ -9,11 +9,10 @@ class Login extends Controller
         Session::start();
         Session::set('pagina', 'Login');
         $this->view('master');
+        $this->showPopup();
     }
 
     public function index(){
-
-        $this->showPopup();
         $this->view('login/admin');
 
     }

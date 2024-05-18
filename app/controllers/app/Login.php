@@ -7,11 +7,11 @@ class Login extends Controller
     public function __construct(){
         Session::start();
         $this->view('master');
+        $this->showPopup();
     }
 
     public function index(){
-        
-        $this->showPopup();
+
         $this->view('login/app');
 
     }

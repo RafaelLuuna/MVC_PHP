@@ -8,6 +8,7 @@ class Home extends Controller
         Session::start();
         $this->blocker('login');
         $this->view('master');
+        $this->showPopup();
     }
 
     public function index(){

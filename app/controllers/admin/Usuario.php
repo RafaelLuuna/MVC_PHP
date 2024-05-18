@@ -8,21 +8,14 @@ class Usuario extends Controller
         Session::start();
         Session::set('pagina', 'Usuarios');
         $this->blocker('admin/login');
-
-        
         $this->view('master');
+        $this->showPopup();
     }
     
     public function index(){
         $this->view('admin/header');
-        
-        // $this->view('admin/usuario/home');
-        $table = new Table('usuarios');
-        // show($table->count(['id'=>280],['operator'=>'>','second_search'=>['id'=>300],'second_operator'=>'<', 'pagination'=>false]));
-        $page = 11;
-        echo 'pages: '.$table->pages();
-        show($table->count([],['pagination'=>true, 'page'=>$page]));
-        show($table->find([],['page'=>$page]));
+        $this->view('admin/usuario/home');
+
 
     }
     

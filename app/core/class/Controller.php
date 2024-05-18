@@ -2,51 +2,37 @@
 defined("ROOTPATH") OR exit("Acces denied.");
 class Controller
 {
-    public static function loadTable($table, $columns, $altColumName=[]){
-        $table = new Table($table);
-        $tableData = $table->tableData([],$columns);
-        $tableElement = '';
+    public static function loadTable($tableName, $columns, $config=[]){
 
-        $tableElement .= '<div class="flex column w10">';
-            $tableElement .= '<table>';
-                $tableElement .= '<thead>';
-                    $tableElement .= '<tr>';
-                        foreach($columns as $key=>$column){
-                            if(empty($columnName)){
-                                $tableElement .= '<th>'.$column.'</th>';
-                                
-                            }else{
-                                $tableElement .= '<th>'.$altColumName[$key].'</th>';
-                                
-                            }
-                        }
-                    $tableElement .= '</tr>';
-                $tableElement .= '</thead>';
-                $tableElement .= '<tbody>';
-                    foreach($tableData as $row){
-                        $tableElement .= '<tr>';
-                        foreach($row as $value){
-                            $tableElement .= '<td>'.$value.'</td>';
-                        }
-                        $tableElement .= '</tr>';
-                    }
-                $tableElement .= '</tbody>';
-                        
-            $tableElement .= '</table>';
+        $defaultConfig=[
+            'altColumName'=>[],
+            'querySearch'=>[],
+            'queryConfig'=>[]
+        ];
 
-            $tableElement .= '<div class="flex row w10">
-                <div></div>
-                <div>';
-                $tableElement .= '<a href='.ROOT.$_GET['url'].'&page=1">1</a>';
-            $tableElement .= '</div>';
+        foreach($defaultConfig as $k=>$v){
+            if(!isset($config[$k])){
+                $config[$k]=$v;
+            }
+        }
+        
+        empty($columns) or $config['queryConfig']['columns'] = $columns;
+        
+        $table = new Table($tableName);
+        $tableData = $table->tableData($config['querySearch'],$config['queryConfig']);
+        $pageCount = $table->pageCount($config['querySearch'],$config['queryConfig']);
 
-        $tableElement .= '</div>';
 
-        echo $tableElement;
+        $_POST['config']=$config;
+        $_POST['columns']=$columns;
+        $_POST['tableData']=$tableData;
+        $_POST['pageCount']=$pageCount;
+        
+        Controller::view('table');
     }
 
 
-    public function view($name){
+    public static function view($name){
         $filename = "../app/views/".$name.".view.php";
 
         if(!file_exists($filename))
@@ -60,41 +46,9 @@ class Controller
         if(!isset($_COOKIE['popup'])){
             return false;
         }
-
-
-        $popup = $_COOKIE['popup'];
-        $popupElements = explode('|',$popup);
-        foreach($popupElements as $popupElement){
-            [$key, $value] = explode(':',$popupElement);
-            $popupElements[$key] = $value;
-        }
-
-        if(isset($popupElements['title'])){
-            $_POST['popup-title'] = $popupElements['title'];
-        }
-        if(isset($popupElements['content'])){
-            $_POST['popup-content'] = $popupElements['content'];
-        }
-
-
-
-        if(isset($popupElements['img-path'])){
-            $_POST['popup-img-path'] = ROOT.$popupElements['img-path'];
-            $_POST['popup-img-style'] = '';
-        }else{
-            $_POST['popup-img-style'] = 'display:none;';
-        }
-
-        if(isset($popupElements['buttons'])){
-            $_POST['popup-buttons'] = $popupElements['buttons'];
-            $_POST['popup-button-style'] = '';
-        }else{
-            $_POST['popup-button-style'] = 'display:none;';
-        }
-        
+        $this->view('popup');
         setcookie('popup', '', ['expires'=>time()+1, 'path'=>'/']);
         
-        $this->view('popup');
 
     }
 

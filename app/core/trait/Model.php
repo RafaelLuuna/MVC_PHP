@@ -5,14 +5,12 @@ Trait Model{
     use DataBase;
 
     protected $limit = 15;
-    protected $offset = 0;
 
     public function setLimit($limit){
         if(is_numeric($limit)){
             $this->limit = $limit;
         }
     }
-
     public function find($search=[], $config=[]){
         $defaultConfig=[
             'columns'=>['*'],
@@ -35,25 +33,25 @@ Trait Model{
         
         $query = "SELECT ";
         
-        // Adiciona as colunas a serem retornadas
+        // Adiciona as colunas que vão ser retornadas
         $query .= concatParams($config['columns'],"value",", ", false);
 
         $query .= " FROM $this->table";
 
+        // Adiciona os dados de busca
         if(!empty($search)){
-            // Adiciona os dados de busca
             $query .= " WHERE ".concatParams($search,"key".$config['operator'].":key"," && ", false);
             
-            // Adiciona quaisquer outros dados específicos de busca de acordo com o operador
+            // Adiciona os dados da segunda busca
             if(is_array($config['second_search']) && !empty($config['second_search'])){
                 if(count($search)>0){
                     $query .= ' && ';
                 }
                 $query .= concatParams($config['second_search'],"key".$config['second_operator'].":key2"," && ", false);
+
+                // Adiciona o número 2 na chave da segunda busca para não conflitar com a primeira
                 foreach($config['second_search'] as $k=>$v){
-                    if(isset($search[$k])){
-                        $k .= '2';
-                    }
+                    $k .= '2';
                     $newArr[$k] = $v;
                 }
                 $config['second_search'] = $newArr;
@@ -128,8 +126,10 @@ Trait Model{
     }
 
     public function count($search=[], $config=[]){
-        if(!isset($config['pagination'])){$config['pagination'] = false;}
+        isset($config['pagination']) or $config['pagination'] = false;
+
         $data = $this->find($search, $config);
+        
         if(!empty($data)){
             return count($data);
         }else{
@@ -138,9 +138,13 @@ Trait Model{
 
     }
 
-    public function pages($search=[], $config=[]){
+    public function pageCount($search=[], $config=[]){
         return ceil($this->count($search, $config) / $this->limit);
     }
 
-
+    public function columns(){
+        $query = "SHOW COLUMNS FROM $this->table";
+        $columns = $this->query($query);
+        return $columns;
+    }
 }
