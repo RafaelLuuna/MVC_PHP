@@ -7,34 +7,47 @@ Trait Model{
     protected $limit = 15;
     protected $offset = 0;
 
-    public function find($data, $columns=['*'], $specific_data=[], $operator='='){
+    public function find($search=[], $config=[]){
+        $defaultConfig=[
+            'columns'=>['*'],
+            'operator'=>'=',
+            'second_search'=>[],
+            'second_operator'=>'=',
+            'pagination'=>true,
+        ];
+
+        foreach($defaultConfig as $k=>$v){
+            if(!isset($config[$k])){
+                $config[$k]=$v;
+            }
+        }
+        
         $query = "SELECT ";
         
-        // Adiciona as colunas retornadas
-        $query .= concatParams($columns,"value",", ", false);
+        // Adiciona as colunas a serem retornadas
+        $query .= concatParams($config['columns'],"value",", ", false);
 
         $query .= " FROM $this->table";
 
-        if(!empty($data)){
+        if(!empty($search)){
             // Adiciona os dados de busca
-            $query .= " WHERE ".concatParams($data,"key=:key"," && ", false);
+            $query .= " WHERE ".concatParams($search,"key".$config['operator'].":key"," && ", false);
             
-            // Adiciona quaisquer outros dados específicos de busca
-            if(is_array($specific_data) && !empty($specific_data)){
-                if(count($data)>0){
+            // Adiciona quaisquer outros dados específicos de busca de acordo com o operador
+            if(is_array($config['second_search']) && !empty($config['second_search'])){
+                if(count($search)>0){
                     $query .= ' && ';
                 }
-                $query .= concatParams($specific_data,"key".$operator.":key"," && ", false);
+                $query .= concatParams($config['second_search'],"key".$config['operator'].":key"," && ", false);
             }
 
         }
 
 
-        $query .= " LIMIT $this->limit OFFSET $this->offset;";
+        if($config['pagination'] == true){$query .= " LIMIT $this->limit OFFSET $this->offset;";}
 
         
-        // executa a query
-        $merged_data = array_merge($data,$specific_data);
+        $merged_data = array_merge($search,$config['second_search']);
         return $this->query($query,$merged_data);
 
     }
@@ -46,14 +59,13 @@ Trait Model{
         $query .= " VALUES ";
         $query .= concatParams($data, ":key", " , ", true).";";
 
-        // executa a query
-        if(count($this->find($data)) == 0 || $no_dup == false){
-            $this->query($query, $data);
-            return true;
-        }else{
+        if($no_dup == false && $this->count($data)){
             echo '<br>Erro ao inserir dados: registro duplicado';
             return false;
         }
+
+        $this->query($query, $data);
+        return true;
         
     }
     
@@ -64,8 +76,7 @@ Trait Model{
         $query .= concatParams($data,"key=:key"," , ", false);
         $query .= " WHERE id=:id;";
 
-        // executa a query
-        if(count($this->find(['id'=>$id])) > 0){
+        if($this->count(['id'=>$id]) > 0){
             $data['id'] = $id;
             $this->query($query, $data);
             return true;
@@ -74,10 +85,10 @@ Trait Model{
             return false;
         }
     }
-    public function first($data, $columns=['*'], $specific_data=[], $operator='='){
-        $result = $this->find($data, $columns, $specific_data, $operator);
-        if(!empty($result)){
-            return $result[0];
+    public function first($search=[], $config=[]){
+        $data = $this->find($search, $config);
+        if(!empty($data)){
+            return $data[0];
         }else{
             return false;
         }
@@ -87,7 +98,6 @@ Trait Model{
         // prepara os parametros
         $query = "DELETE FROM $this->table WHERE id=:id;";
 
-        // executa a query
         if(count($this->find(['id'=>$id])) > 0){
             $this->query($query, ['id'=>$id]);
             return true;
@@ -95,6 +105,20 @@ Trait Model{
             echo '<br>Erro ao atualizar dados: id não encontrado';
             return false;
         }
+    }
+
+    public function count($search=[], $config=[]){
+        $data = $this->find($search, $config);
+        if(!empty($data)){
+            return $data[0];
+        }else{
+            return false;
+        }
+
+    }
+
+    public function pages($search=[], $config=['columns'=>['*'], 'second_search'=>[], 'operator'=>'=', 'second_operator'=>'=']){
+        return floor($this);
     }
 
 

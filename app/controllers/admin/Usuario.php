@@ -16,7 +16,9 @@ class Usuario extends Controller
     public function index(){
         $this->view('admin/header');
         
-        $this->view('admin/usuario/home');
+        // $this->view('admin/usuario/home');
+        $table = new Table('usuarios');
+        show($table->find(['id'=>190],['columns'=>['id','nome'],'operator'=>'>', 'pagination'=>false]));
 
     }
     

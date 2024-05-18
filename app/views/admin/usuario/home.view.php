@@ -12,15 +12,7 @@
 
 
     <div class="flex row">
-        <div class="flex column w10">
-            <?=Controller::loadTable('usuarios',['id','nome','email','status'])?>
-            <div class="flex row w10">
-                <div></div>
-                <div>
-                    <a href="<?=ROOT.$_GET['url']?>&page=1">1</a>
-                </div>
-            </div>
+        <?=Controller::loadTable('usuarios',['id','nome','email','status'])?>
             
-        </div>
     </div>
 </div>

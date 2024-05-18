@@ -4,33 +4,43 @@ class Controller
 {
     public static function loadTable($table, $columns, $altColumName=[]){
         $table = new Table($table);
-        $data = $table->tableData([],$columns);
+        $tableData = $table->tableData([],$columns);
         $tableElement = '';
-        $tableElement .= '<table>';
-            $tableElement .= '<thead>';
-                $tableElement .= '<tr>';
-                    foreach($columns as $key=>$column){
-                        if(empty($columnName)){
-                            $tableElement .= '<th>'.$column.'</th>';
-                            
-                        }else{
-                            $tableElement .= '<th>'.$altColumName[$key].'</th>';
-                            
-                        }
-                    }
-                $tableElement .= '</tr>';
-            $tableElement .= '</thead>';
-            $tableElement .= '<tbody>';
-                foreach($data as $row){
+
+        $tableElement .= '<div class="flex column w10">';
+            $tableElement .= '<table>';
+                $tableElement .= '<thead>';
                     $tableElement .= '<tr>';
-                    foreach($row as $value){
-                        $tableElement .= '<td>'.$value.'</td>';
-                    }
+                        foreach($columns as $key=>$column){
+                            if(empty($columnName)){
+                                $tableElement .= '<th>'.$column.'</th>';
+                                
+                            }else{
+                                $tableElement .= '<th>'.$altColumName[$key].'</th>';
+                                
+                            }
+                        }
                     $tableElement .= '</tr>';
-                }
-            $tableElement .= '</tbody>';
-                    
-        $tableElement .= '</table>';
+                $tableElement .= '</thead>';
+                $tableElement .= '<tbody>';
+                    foreach($tableData as $row){
+                        $tableElement .= '<tr>';
+                        foreach($row as $value){
+                            $tableElement .= '<td>'.$value.'</td>';
+                        }
+                        $tableElement .= '</tr>';
+                    }
+                $tableElement .= '</tbody>';
+                        
+            $tableElement .= '</table>';
+
+            $tableElement .= '<div class="flex row w10">
+                <div></div>
+                <div>';
+                $tableElement .= '<a href='.ROOT.$_GET['url'].'&page=1">1</a>';
+            $tableElement .= '</div>';
+
+        $tableElement .= '</div>';
 
         echo $tableElement;
     }
