@@ -18,7 +18,11 @@ class Usuario extends Controller
         
         // $this->view('admin/usuario/home');
         $table = new Table('usuarios');
-        show($table->find(['id'=>190],['columns'=>['id','nome'],'operator'=>'>', 'pagination'=>false]));
+        // show($table->count(['id'=>280],['operator'=>'>','second_search'=>['id'=>300],'second_operator'=>'<', 'pagination'=>false]));
+        $page = 11;
+        echo 'pages: '.$table->pages();
+        show($table->count([],['pagination'=>true, 'page'=>$page]));
+        show($table->find([],['page'=>$page]));
 
     }
     

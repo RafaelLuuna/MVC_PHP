@@ -7,6 +7,12 @@ Trait Model{
     protected $limit = 15;
     protected $offset = 0;
 
+    public function setLimit($limit){
+        if(is_numeric($limit)){
+            $this->limit = $limit;
+        }
+    }
+
     public function find($search=[], $config=[]){
         $defaultConfig=[
             'columns'=>['*'],
@@ -14,12 +20,17 @@ Trait Model{
             'second_search'=>[],
             'second_operator'=>'=',
             'pagination'=>true,
+            'page'=>1
         ];
-
+        
         foreach($defaultConfig as $k=>$v){
             if(!isset($config[$k])){
                 $config[$k]=$v;
             }
+        }
+
+        if(!is_numeric($config['page']) || $config['page'] <= 0){
+            $config['page'] = 1;
         }
         
         $query = "SELECT ";
@@ -38,15 +49,24 @@ Trait Model{
                 if(count($search)>0){
                     $query .= ' && ';
                 }
-                $query .= concatParams($config['second_search'],"key".$config['operator'].":key"," && ", false);
+                $query .= concatParams($config['second_search'],"key".$config['second_operator'].":key2"," && ", false);
+                foreach($config['second_search'] as $k=>$v){
+                    if(isset($search[$k])){
+                        $k .= '2';
+                    }
+                    $newArr[$k] = $v;
+                }
+                $config['second_search'] = $newArr;
             }
 
         }
 
-
-        if($config['pagination'] == true){$query .= " LIMIT $this->limit OFFSET $this->offset;";}
-
         
+        if($config['pagination'] == true){
+            $offset = $this->limit*($config['page']-1);
+            $query .= " LIMIT $this->limit OFFSET $offset;";
+        }
+
         $merged_data = array_merge($search,$config['second_search']);
         return $this->query($query,$merged_data);
 
@@ -108,17 +128,18 @@ Trait Model{
     }
 
     public function count($search=[], $config=[]){
+        if(!isset($config['pagination'])){$config['pagination'] = false;}
         $data = $this->find($search, $config);
         if(!empty($data)){
-            return $data[0];
+            return count($data);
         }else{
-            return false;
+            return 0;
         }
 
     }
 
-    public function pages($search=[], $config=['columns'=>['*'], 'second_search'=>[], 'operator'=>'=', 'second_operator'=>'=']){
-        return floor($this);
+    public function pages($search=[], $config=[]){
+        return ceil($this->count($search, $config) / $this->limit);
     }
 
 

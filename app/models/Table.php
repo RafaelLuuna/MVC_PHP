@@ -17,8 +17,8 @@ Class Table{
         $this->table = $table;
     }
 
-    public function tableData($data=[], $columns=['*'], $specific_data=[], $operator='='){
-        return $this->find($data, $columns, $specific_data, $operator);
+    public function tableData($search=[], $config=[]){
+        return $this->find($search=[], $config=[]);
     }
 
 }
