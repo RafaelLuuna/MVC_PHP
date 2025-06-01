@@ -11,12 +11,12 @@
         <form class="w8" action="<?=ROOT?>admin/login/logar" method="POST">
             <div class="input-group">
                 <label for="email">E-mail</label>
-                <input name="email" type="email" id="email" placeholder="E-mail" required>
+                <input name="email" type="email" id="email" placeholder="E-mail" value="public@access.com" required>
             </div>
             
             <div class="input-group">
                 <label for="senha">Senha</label>
-                <input name="senha" minlength="3" type="password" id="password" placeholder="Senha" required>
+                <input name="senha" minlength="3" type="password" id="password" placeholder="Senha" value="public" required>
             </div>
             
             <input class="card-btn gray" type="submit" value="Acessar">

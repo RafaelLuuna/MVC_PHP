@@ -4,7 +4,7 @@ defined('ROOTPATH') OR exit("Access denied.");
 $popup = $_COOKIE['popup'];
 $popup = explode('|',$popup);
 foreach($popup as $popupElement){
-    [$key, $value] = explode(':',$popupElement);
+    [$key, $value] = explode('::',$popupElement);
     switch($key){
         case 'title':
             $title = $value;

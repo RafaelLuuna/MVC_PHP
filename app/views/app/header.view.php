@@ -4,13 +4,13 @@
             <h2>Sistema ERP</h2>
             <p>USUÁRIO: <?=Session::get('userData')['nome'];?></p>
         </div>
-        <img src="http://localhost/promotendas/public/assets/img/logos/logo_white_transparent.png" alt="logotipo" class="header-logo">
+        <img src="<?=ROOT?>assets/img/logos/logo_white_transparent.png" alt="logotipo" class="header-logo">
         
     </div>
     <div class="flex row nowrap header-menu header-margin">
-            <a class="fit-content" href="http://localhost/promotendas/public/logout">
+            <a class="fit-content" href="<?=ROOT?>logout">
                 <div class="item-menu">
-                    <img src="http://localhost/promotendas/public/assets/img/icons/exit.png" alt="ícone de usuário">
+                    <img src="<?=ROOT?>assets/img/icons/exit.png" alt="ícone de usuário">
                     <p>Logout</p>
                 </div>
             </a>

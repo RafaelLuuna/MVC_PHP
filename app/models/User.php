@@ -14,7 +14,7 @@ Class User{
             Session::set('userData', $userData);
             redirect($homePage);
         }else{
-            setcookie('popup', 'title:Erro ao fazer login|content:Usuário ou senha inválidos', ['path'=>'/']);
+            setcookie('popup', 'title::Erro ao fazer login|content::Usuário ou senha inválidos', ['path'=>'/']);
             redirect($default);    
         }
     }

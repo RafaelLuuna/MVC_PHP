@@ -14,7 +14,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost'){
     define('DB_DRIVER', '');
 
 
-    define('ROOT', 'http://localhost/promotendas/public/');
+    define('ROOT', 'http://localhost/public/');
     
 }else{
 

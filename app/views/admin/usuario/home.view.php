@@ -6,7 +6,7 @@
             <h2 class="title">Usuarios</h2>    
         </div>
         <div class="flex row">
-            <a href="http://localhost/promotendas/public/admin/usuario/cadastro" class="btn">Novo usuário</a>
+            <a href="<?=ROOT?>admin/usuario/cadastro" class="btn">Novo usuário</a>
         </div>
     </div>
 
