@@ -1,7 +1,7 @@
 # ESTUDO DE FRAMEWORK MVC EM PHP
 
 Este projeto é um estudo que fiz para aprender como funciona o core de um framework MVC.
-Esta aplicação foi desenvolvida do absoluto zero, não utilizei nenhum framework pronto para conseguir estudas conceitos importantes de desenvolvimento como por exemplo:
+Esta aplicação foi desenvolvida do absoluto zero, optei por não utilizar nenhum framework pronto (como Laravel ou CodeIgniter) para que eu possa entender á fundo alguns conceitos importantes de desenvolvimento como por exemplo:
 
 - Uso de sistemas de roteamento
 - Conexão com banco de dados externo
