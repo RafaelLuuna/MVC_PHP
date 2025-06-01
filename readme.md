@@ -11,4 +11,4 @@ Esta aplicação foi desenvolvida do absoluto zero, optei por não utilizar nenh
 
 Essas são algumas das coisas que aprendi ao desenvolver este projeto e, apesar de não ser uma aplicação própria para produção, todos os conceitos apendidos aqui são fundamentais para desenvolver qualquer aplicação web.
 
-[Clique aqui] (http://meu.curriculo-pessoal.com.br/mvc-php/) para ver a aplicação em execução.
+[Clique aqui](http://meu.curriculo-pessoal.com.br/mvc-php/) para ver a aplicação em execução.
