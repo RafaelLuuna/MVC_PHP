@@ -25,9 +25,9 @@ class Usuario extends Controller
     }
     
     public function cadastrar(){
-        // $User = new User();
-        // $User->insert($_POST);
-        setcookie('popup', 'title::Atenção!|content::Por questões de segurança os dados não estão sendo registrados neste ambiente de produção. <br>Caso deseje entender como a inserção é feita, você pode consultar o código fonte <a href="https://github.com/RafaelLuuna/MVC_PHP">clicando aqui</a> ', ['path'=>'/']);
+        $User = new User();
+        $User->insert($_POST);
+        setcookie('popup', 'title::Atenção!|content::Usuário registrado com sucesso!. <br>Caso deseje entender como a inserção é feita, você pode consultar o código fonte <a href="https://github.com/RafaelLuuna/MVC_PHP">clicando aqui</a> ', ['path'=>'/']);
 
         header("Location: ".ROOT."admin/usuario");
     }

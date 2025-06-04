@@ -13,6 +13,8 @@ class Home extends Controller
 
     public function index(){
         $this->view('app/header');
+        $this->view('app/home/home');
+
         
     }
     
